@@ -1,0 +1,122 @@
+\documentclass{beamer}
+
+
+\mode<presentation>
+{
+ \usetheme[reversetitle,notitle,noauthor,
+  logoleft=TUW-Logo.png, logocenter=oCPS_logo.jpg,
+  logoright=Imsys_logo.png]{Wien} 
+%  \usetheme[notitle,noauthor]{Wien} 
+} 
+ 
+\usepackage{url}
+
+\usepackage[export]{adjustbox}
+
+\usepackage{array}
+
+\graphicspath{{./}{./Figures/}}
+
+%\definecolor{orange}{RGB}{255,127,0}
+% Colors:dots,dmaxdots=8,
+\newcommand{\hicolA}{\color{red}}
+\newcommand{\hicolB}{\color{blue}}
+\newcommand{\hilightA}[1]{{\sl\bf\hicolA #1}}
+\newcommand{\hilightB}[1]{{\bf\hicolB #1}}
+\newcommand{\hl}[1]{\colorbox{yellow}{#1}}
+
+% For wider frames: 
+\newcommand\Wider[2][3em]{%
+  \makebox[\linewidth][c]{%
+    \begin{minipage}{\dimexpr\textwidth+#1\relax}
+      \raggedright#2
+    \end{minipage}%
+  }%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Define display of the document structuring elements part, section
+%% and subsection:
+%%
+
+\AtBeginSection[] % Do nothing for \section*
+{
+  \begin{frame}{Resource Management for Mixed-Criticality Systems}
+    \tableofcontents[currentsection,subsectionstyle=show/show/hide]
+  \end{frame}
+}
+
+\AtBeginSubsection[] % Do nothing for \subsection*
+{
+  \begin{frame}{Resource Management for Mixed-Criticality Systems}
+    \tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+  \end{frame}
+}
+
+% Adjust vertical separation in TOC to keep it within frame
+\makeatletter
+\patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip0.5em}{}{}
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Resource Management for Mixed-Criticality Systems on Multi-Core Platforms\\with Focus on Communication}
+
+\subtitle{Embedded Tutorial}
+
+\author{Robin Arbaud, D\'avid Juh\'asz, Axel Jantsch}
+
+\institute{DSD 2018, Prague, Czech Republic}
+   
+\date{\today}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}      
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Outline}
+  \tableofcontents[subsectionstyle=hide]
+\end{frame}
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{Section-Introduction.tex}
+   
+\input{Section-TemporalPartitioning.tex}
+\input{Section-MCBusArbiters.tex}
+\input{Section-MCNoCs.tex}
+\input{Section-MCArchitectures.tex}
+\input{Section-Conclusions.tex}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+
+  \centering\Huge
+  ?` Questions ?
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

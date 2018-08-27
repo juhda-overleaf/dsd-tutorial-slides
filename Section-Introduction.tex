@@ -1,0 +1,153 @@
+\section{Introduction}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Properties to be Guaranteed}
+  
+\begin{description}
+\item[Safety Property] Nothing bad happens: Can be checked at design time;
+\item[Liveness Property] Something good eventually happens: Much
+  harder problem;
+\end{description}
+\begin{itemize}
+\item For real-time systems all properties are safety properties, but
+  modeling of time has to be included.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Average Case and Worst Case}
+\Wider{  \centering
+  \includegraphics<1>[]{Figures/ExecTime-WCAverage-1}  
+  \includegraphics<2>[]{Figures/ExecTime-WCAverage-2}
+  } 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Sharing and Isolation}
+  
+  \begin{itemize}
+  \item Full Isolation to accommodate the worst case:
+    \begin{itemize}
+    \item Dedicated resources for a given task;
+    \item Addresses real-time and safety requirements;
+    \item Costly due to over-provisioning;
+    \item Complete isolation = no interference.
+    \end{itemize}
+  \item Full sharing to accommodate the average case:
+    \begin{itemize}
+    \item Best average performance for given cost;
+    \item Lowest cost for target average performance;
+    \item Highest efficiency;
+    \item Unbounded worst case performance.
+    \end{itemize}
+  \item Sharing with bounded interference:
+    \begin{itemize}
+    \item Allowing and controlling interference can provide real-time
+      and safety requirement;
+    \item Reduced costs;
+    \item Applicable for mix of critical and best effort tasks.
+    \end{itemize}
+  \end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Interference Effects}
+    \begin{itemize}
+    \item Direct interference and competition for the same resource;
+    \item Indirect interference through shared resources:
+      
+      \begin{itemize}
+      \item Performance inversion,
+      \item Over-synchronization.
+      \end{itemize}
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Performance Inversion}
+  \centering
+  \includegraphics<1>[]{Figures/PerformanceInversion-1}
+  \includegraphics<2>[]{Figures/PerformanceInversion-2}
+  \includegraphics<3->[]{Figures/PerformanceInversion-3}
+  
+\begin{itemize}
+\item<2-> \only<2>{PE1 communicates with M1 and PE2 communicates with M2;}
+      \only<3->{Replacing PE1 with a faster PE; }
+\item<2,4-> \only<2>{All tasks meet deadlines;}
+  \only<4>{\hilightA{May increase execution time of PE2 tasks.}}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Over-Synchronization}
+
+  \centering             
+  \includegraphics<1>[]{Figures/over-sync-1}
+  \includegraphics<2>[]{Figures/over-sync-2}
+  \includegraphics<3>[]{Figures/over-sync-3}
+  \includegraphics<4>[]{Figures/over-sync-4}
+     
+\begin{itemize}
+\item<1-> Assumption: Bounded buffers between tasks;
+\item<1-> No control or data dependency between C and D branches;
+\item<4> \hilightA{If C is delayed or stuck, D suffers.}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Spatial and Temporal Isolation}
+  \begin{itemize}
+  \item Spatial isolation: No sharing at any time;
+  \item Temporal isolation: Sharing at pre-defined time periods.
+  \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Spatial Isolation}
+  \centering
+  \includegraphics<1>[height=0.8\paperheight]{Figures/SpatialIsolation-1}
+  \includegraphics<2>[height=0.8\paperheight]{Figures/SpatialIsolation-2}
+  \includegraphics<3>[height=0.8\paperheight]{Figures/SpatialIsolation-3}
+\end{frame} 
+       
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Temporal Isolation}
+  \centering
+  \includegraphics<1>[height=0.8\paperheight]{Figures/TimeIsolation-1}
+  \includegraphics<2>[height=0.8\paperheight]{Figures/TimeIsolation-2}
+  \includegraphics<3>[height=0.8\paperheight]{Figures/TimeIsolation-3}
+\end{frame} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Resource Management in Many-Core SoCs}
+
+  \pause
+  \begin{itemize}[<+->]
+  \item Many resources lead to a huge design space;
+  \item Types of Resources:
+    
+    \begin{itemize}
+    \item Computation: Processing elements,
+    \item Storage: Buffers, caches, off-chip memory,
+    \item \hilightB{Communication: Buses, links, NoCs.}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Overview}      
+  \includegraphics<1>[width=\textwidth]{Figures/overview-0.pdf}
+  \includegraphics<2>[width=\textwidth]{Figures/overview-1.pdf}
+  \includegraphics<3>[width=\textwidth]{Figures/overview-2.pdf}
+  \includegraphics<4>[width=\textwidth]{Figures/overview-3.pdf}
+  \includegraphics<5>[width=\textwidth]{Figures/overview-4.pdf}
+  \includegraphics<6>[width=\textwidth]{Figures/overview-5.pdf}
+  \includegraphics<7>[width=\textwidth]{Figures/overview-6.pdf}
+\end{frame}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "slides"
+%%% End:
+ 

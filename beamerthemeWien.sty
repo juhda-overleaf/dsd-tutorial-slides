@@ -1,0 +1,77 @@
+% Copyright 2017-2018 by Axel Jantsch
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under GNU General Public License v. 3 (GPLv3) 
+%
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemeWien}[2018/08/10 v0.4 The ICT TU Wien Beamer Theme]
+
+%----------------------------------------------------------------------------------------------------------------------------------
+
+% load required packages
+
+\RequirePackage{tikz}
+
+%----------------------------------------------------------------------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Theme options and definitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------------------------------------------------
+
+% To set the frame title in white with blue background:
+\DeclareOptionBeamer{reversetitle}{\PassOptionsToPackage{reversetitle}{beamercolorthemeWien}
+                                   \PassOptionsToPackage{reversetitle}{beamerouterthemeWien}}
+
+% Control, what is shown in the foot line:
+\DeclareOptionBeamer{noframenumber}{\PassOptionsToPackage{noframenumber}{beamerouterthemeWien}}
+\DeclareOptionBeamer{noauthor}{\PassOptionsToPackage{noauthor}{beamerouterthemeWien}}
+\DeclareOptionBeamer{notitle}{\PassOptionsToPackage{notitle}{beamerouterthemeWien}}
+\DeclareOptionBeamer{nocircle}{\PassOptionsToPackage{nocircle}{beamerouterthemeWien}}
+
+% \DeclareOptionBeamer{rotationcw}{\PassOptionsToPackage{rotationcw}{beamerouterthemeFeather}}
+%\DeclareOptionBeamer{shownavsym}{\PassOptionsToPackage{shownavsym}{beamerouterthemeFeather}}
+
+% Three logos can be defined that are shown on the title page,
+% at the top left, top center, top right. They are inserted into the
+% title page by the beamerinnerthemeWien:
+\DeclareOptionBeamer{logoleft}{\PassOptionsToPackage{logoleft=#1}{beamerinnerthemeWien}}
+\DeclareOptionBeamer{logocenter}{\PassOptionsToPackage{logocenter=#1}{beamerinnerthemeWien}}
+\DeclareOptionBeamer{logoright}{\PassOptionsToPackage{logoright=#1}{beamerinnerthemeWien}}
+
+% The background pictrue, used in all frames except the first and the
+% last, can also be chosen as option:
+\DeclareOptionBeamer{background}{\PassOptionsToPackage{background=#1}{beamerinnerthemeWien}}
+
+
+% Default logos and background picture:
+\ExecuteOptionsBeamer{logoleft=TUW-Logo.png}  % TU Wien Logo
+\ExecuteOptionsBeamer{logocenter=}            % No logo
+\ExecuteOptionsBeamer{logoright=ICT-Logo.png} % ICT Logo
+
+\ExecuteOptionsBeamer{background=ICT-Background.pdf} % ICT-TUW
+                                % Backfround picture
+
+
+\ProcessOptionsBeamer
+
+%----------------------------------------------------------------------------------------------------------------------------------
+
+%beamer specific options
+
+\mode<presentation>
+
+\beamertemplatenavigationsymbolsempty
+\setbeamertemplate{frametitle}[default][center]
+
+\usecolortheme{Wien}
+\useinnertheme{Wien}
+\useoutertheme{Wien}
+
+
+\mode<all>
