@@ -55,8 +55,9 @@ $T2$&$10$&$10$&$6$&$4$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Full-Scale Mode Switches}
 
-\begin{frame}{Mixed-Criticality Scheduling Theory}
+\begin{frame}{Mixed Criticality Levels}
 
+\begin{minipage}{\textwidth}
 \begin{block}{Worst-Case Execution Time Estimates}<2->
 \begin{itemize}
     \item<3-> Various components are validated against various assumptions
@@ -70,14 +71,21 @@ $T2$&$10$&$10$&$6$&$4$
     \item<7-> Ordered set of levels
 \end{itemize}
 \end{block}
+\end{minipage}
 
-\begin{block}{Mixed-Criticality Scheduling with Criticality Mode Switches}<8->
-\begin{itemize}
-    \item<9-> Start system in the lowest criticality mode
-    \item<10-> Monitor whether execution violates current assumptions
-    \item<11-> Switch to higher criticality mode for stricter assumptions
+\end{frame}
+
+\begin{frame}{Mixed-Criticality Scheduling with Criticality Mode Switches}
+
+\pause
+\includegraphics[width=\textwidth]{Figures/mixed-crit-sched-robin}
+\pause
+\begin{itemize}[<+->]
+    \item Start system in the lowest criticality mode
+    \item Schedule tasks with criticality not below the current criticality mode
+    \item Monitor whether execution violates current assumptions
+    \item Switch to higher criticality mode for stricter assumptions
 \end{itemize}
-\end{block}
 
 \end{frame}
 
