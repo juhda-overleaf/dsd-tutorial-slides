@@ -4,11 +4,13 @@
 
 \begin{frame}{Real-Time Systems}
 
+\pause
 \begin{block}{Real-Time Constraints from Event to System Response}
 \pause
 \begin{itemize}[<+->]
     \item Deadlines based on real-time requirements
-    \item 
+    \item No deadline misses allowed ever
+    \item Prepare for the worst-case
 \end{itemize}
 \end{block}
 
@@ -21,7 +23,7 @@
 \begin{tabular}{cccc<{\onslide<3->}c<{\onslide}}
 \textbf{Task}&\textbf{Period}&\textbf{Deadline}&\textbf{WCET}&\textbf{ACET}\\ \hline
 $T1$&$10$&$5$&$4$&$2$\\
-$T2$&$10$&$10$&$6$&$4$\\
+$T2$&$10$&$10$&$6$&$4$
 \end{tabular}
 \end{block}
 
@@ -55,13 +57,96 @@ $T2$&$10$&$10$&$6$&$4$\\
 
 \begin{frame}{Mixed-Criticality Scheduling Theory}
 
+\begin{block}{Worst-Case Execution Time Estimates}<2->
+\begin{itemize}
+    \item<3-> Various components are validated against various assumptions
+    \item<4-> The stricter assumptions, the longer estimated WCET
+\end{itemize}
+\end{block}
+
+\begin{block}{Criticality Levels of Tasks}<5->
+\begin{itemize}
+    \item<6-> Strictness of assumptions
+    \item<7-> Ordered set of levels
+\end{itemize}
+\end{block}
+
+\begin{block}{Mixed-Criticality Scheduling with Criticality Mode Switches}<8->
+\begin{itemize}
+    \item<9-> Start system in the lowest criticality mode
+    \item<10-> Monitor whether execution violates current assumptions
+    \item<11-> Switch to higher criticality mode for stricter assumptions
+\end{itemize}
+\end{block}
+
 \end{frame}
 
+
 \begin{frame}{Mixed-Criticality Scheduling with Mode Switches}
+
+\only<1-2>{%
+\begin{minipage}{\textwidth}
+\begin{block}{Task Set $HI$}
+\begin{tabular}{cccc}
+\textbf{Task}&\textbf{Period}&\textbf{Deadline}&\textbf{WCET}\\ \hline
+$T1$&$10$&$5$&$4$\\
+$T2$&$10$&$10$&$6$
+\end{tabular}
+\end{block}
+
+\onslide<2>
+\begin{block}{Task Set $LO$}
+\begin{tabular}{cccc}
+\textbf{Task}&\textbf{Period}&\textbf{Deadline}&\textbf{WCET}\\ \hline
+$T1$&$10$&$5$&$2$\\
+$T2$&$10$&$10$&$4$\\
+$T3$&$10$&$9$&$3$
+\end{tabular}
+\end{block}
+\end{minipage}
+}
+
+\only<3->{%
+\begin{minipage}{\textwidth}
+\begin{block}{Mixed-Criticality Task Set}
+\begin{tabular}{ccccc}
+\textbf{Task}&\textbf{CL}&\textbf{Period}&\textbf{Deadline}&\textbf{WCET}\\ \hline
+$T1$&$HI$&$10$&$5$&$[2,4]$\\
+$T2$&$HI$&$10$&$10$&$[4,6]$\\
+$T3$&$LO$&$10$&$9$&$[3]$
+\end{tabular}
+\end{block}
+
+\bigskip
+
+\includegraphics<4>[width=\textwidth]{Figures/mixed-crit-sched-1}
+\includegraphics<5>[width=\textwidth]{Figures/mixed-crit-sched-2}
+\includegraphics<6>[width=\textwidth]{Figures/mixed-crit-sched-3}
+\includegraphics<7>[width=\textwidth]{Figures/mixed-crit-sched-4}
+
+\onslide<6->{\centering \hilightA{Ignoring $LO$ criticality tasks in $HI$ mode}}
+
+\end{minipage}
+}
 
 \end{frame}
 
 \begin{frame}{Limitations of Mode Switching Scheduling}
+
+\pause
+\begin{block}{Static Verification}\onslide<2->
+\begin{itemize}
+    \item<3-> Timing guarantees for each mode
+    \item<4-> \hilightA{No link to requirements of safety standards}
+\end{itemize}
+\end{block}
+
+\begin{block}{Runtime Robustness}\onslide<2->
+\begin{itemize}
+    \item<5-> \hilightA{Ignoring low-criticality tasks}
+    \item<6-> \hilightA{Returning to low-criticality mode}
+\end{itemize}
+\end{block}
 
 \end{frame}
 
