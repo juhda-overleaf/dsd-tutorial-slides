@@ -292,16 +292,58 @@ Suspend non-critical tasks if safety condition does not hold.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Workload Arrival Monitoring}
 
-\begin{frame}{Workload Arrival Functions}
+\begin{frame}{Workload Arrival Monitoring}
+
+\begin{block}{Workload Arrival Function (WAF) for each Task}<2->
+\begin{itemize}
+    \item<3-> Task is activated by events
+    \item<4-> The events are mapped to WCET values
+    \item<5-> WAF accumulates required execution time
+\end{itemize}
+\end{block}
+
+\begin{block}{Arrival Monitoring and Admission}<6->
+\begin{itemize}
+    \item<7-> Actual workload is calculated based on WAFs
+    \item<8-> Check whether workload would exceed serviceable level
+\end{itemize}
+\end{block}
+
+\onslide<9->{\centering \hilightB{Individual WAFs enforce interference bounds between real-time tasks}}
 
 \end{frame}
 
-\begin{frame}{Workload Arrival Monitoring}
+\begin{frame}{Group Monitoring Scheme}
+
+\begin{block}{Criticality Groups}<2->
+\begin{itemize}
+    \item<3-> Tasks of one criticality level are grouped together
+    \item<4-> A group of tasks is one virtual task for workload arrival
+    \item<5-> Correlation of task activations improves utilization
+\end{itemize}
+\end{block}
+
+\begin{block}{Combining Monitors}<6->
+\begin{itemize}
+    \item<7-> Monitors for groups separately
+    \item<8-> Each monitor respects WAF upper bounds
+    \item<9-> Monitors are synchronized by guarantee interface tuples
+    \item<10-> Pareto interface tuples with maximized individual WAFs
+\end{itemize}
+\end{block}
 
 \end{frame}
 
 
 \begin{frame}{Workload Arrival Monitoring -- Pros and Cons}
+
+\begin{block}{Properties}<2->
+\begin{itemize}
+    \item<3-> \hilightB{Event-triggered}
+    \item<4-> \hilightA{Considering worst-case is highly pessimistic}
+    \item<5-> \hilightB{Group monitoring provides more accurate assumptions}
+\end{itemize}
+\end{block}
 
 \end{frame}
 
