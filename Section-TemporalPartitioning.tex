@@ -167,6 +167,25 @@ $T3$&$LO$&$10$&$9$&$[3]$
 
 \begin{frame}{Memory Accesses and Execution Time}
 
+\begin{block}{Cache Misses}<2->
+\begin{itemize}
+    \item<3-> Memory needs to be accessed
+    \item<4-> Critical tasks may be penalized by interference
+\end{itemize}
+\end{block}
+
+\begin{block}{Limited Interference for Critical Tasks}<5->
+\begin{itemize}
+    \item<6-> Reduce WCET of critical tasks by limiting interference
+    \item<7-> Budget of cache misses for non-critical tasks (cores)
+    \item<8-> Suspend execution of tasks with depleted budget
+\end{itemize}
+\end{block}
+
+\vfill
+
+\onslide<9->{\centering \hilightB{Can be generalized to any shared resource}}
+
 \end{frame}
 
 \begin{frame}{Memory Access Budgeting}
@@ -177,6 +196,27 @@ $T3$&$LO$&$10$&$9$&$[3]$
 
 
 \begin{frame}{Memory Access Budgeting -- Pros and Cons}
+
+
+\begin{block}{Pros}
+\begin{itemize}
+    \item<2-> Low overhead on COTS
+    \begin{itemize}
+        \item<3-> Performance counters
+        \item<3-> Interprocessor interrupts
+    \end{itemize}
+\end{itemize}
+\end{block}
+
+\vfill
+
+\begin{block}{Cons}
+\begin{itemize}
+    \item<4-> Limited to $2$ levels, critical and non-critical
+    \item<5-> No general algorithm for deriving budgets
+    \item<6-> Not scaling with the number of non-critical cores
+\end{itemize}
+\end{block}
 
 \end{frame}
 
@@ -231,7 +271,7 @@ Suspend non-critical tasks if safety condition does not hold.
 
 \begin{block}{Pros}
 \begin{itemize}
-    \item<2-> Code instrumentation is easy to implement in COTS
+    \item<2-> Code instrumentation is easy to implement on COTS
     \item<3-> Monitoring execution time limits pessimism
     \item<4-> Evaluating condition at observation points limits pessimism
 \end{itemize}
