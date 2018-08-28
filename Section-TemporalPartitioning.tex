@@ -65,6 +65,8 @@ $T2$&$10$&$10$&$6$&$4$
 \end{itemize}
 \end{block}
 
+\vfill
+
 \begin{block}{Criticality Levels of Tasks}<5->
 \begin{itemize}
     \item<6-> Strictness of assumptions
@@ -151,8 +153,9 @@ $T3$&$LO$&$10$&$9$&$[3]$
 
 \begin{block}{Runtime Robustness}\onslide<2->
 \begin{itemize}
-    \item<5-> \hilightA{Ignoring low-criticality tasks}
-    \item<6-> \hilightA{Returning to low-criticality mode}
+    \item<5-> Switching mode to restrict assumptions as necessary
+    \item<6-> \hilightA{Ignoring low-criticality tasks}
+    \item<7-> \hilightA{Returning to low-criticality mode}
 \end{itemize}
 \end{block}
 
@@ -180,18 +183,68 @@ $T3$&$LO$&$10$&$9$&$[3]$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Execution Time Monitoring}
 
-\begin{frame}{Remaining Worst-Case Execution Time}
+\begin{frame}{Monitoring Execution Time and Remaining WCET}
+
+\begin{block}{WCET and Observation Points for Critical Tasks}<2->
+\begin{itemize}
+    \item<3-> Remaining WCET for each observation point
+    \item<4-> Worst-case interference between observation points
+\end{itemize}
+\end{block}
+
+\vfill
+
+\begin{block}{Safety Condition at each Observation Point}<5->
+The critical task will not miss its deadline even if worst-case happens until the next observation point
+\end{block}
 
 \end{frame}
 
 \begin{frame}{Execution Time Monitoring}
 
-\includegraphics[width=\textwidth]{Figures/exec-time-monitoring-robin}
+Evaluate safety condition at each observation point:
+
+\vfill
+
+\begin{tabular}{lp{2pt}cl}
+\onslide<2->{\color{olive}code segment $k-$}&&&\onslide<4->{\color{olive}execution time}\\
+\onslide<3->{observation point $k$}&&&\\
+\onslide<2->{\color{orange}code segment $k$}&&\onslide<4->{$+$}&\onslide<4->{\color{orange}$WCET_{interference}(k, k+1)$}\\
+\onslide<3->{observation point $k+1$}&&&\\
+\onslide<2->{\color{red}code segment $k+$}&&\onslide<4->{$+$}&\onslide<4->{\color{red}$WCET_{isolation}(k+1, end)$}\\
+&&&\\
+&&\onslide<4->{$+$}&\onslide<4->{\color{purple}observation overhead}\\
+&&&\\
+&&\onslide<4->{$<$}&\onslide<4->{deadline}
+\end{tabular}
+
+\vfill
+
+\onslide<5->{%
+Suspend non-critical tasks if safety condition does not hold.
+}
 
 \end{frame}
 
 
 \begin{frame}{Execution Time Monitoring -- Pros and Cons}
+
+\begin{block}{Pros}
+\begin{itemize}
+    \item<2-> Code instrumentation is easy to implement in COTS
+    \item<3-> Monitoring execution time limits pessimism
+    \item<4-> Evaluating condition at observation points limits pessimism
+\end{itemize}
+\end{block}
+
+\vfill
+
+\begin{block}{Cons}
+\begin{itemize}
+    \item<5-> Limited to $2$ levels, critical and non-critical
+    \item<6-> Large execution time overhead of monitoring
+\end{itemize}
+\end{block}
 
 \end{frame}
 
