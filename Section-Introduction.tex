@@ -1,17 +1,16 @@
 \section{Introduction}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Properties to be Guaranteed}
+\begin{frame}{Mixed Criticality Systems}
   
+  Types of tasks:
+  
+  \vspace{4ex}
 \begin{description}
-\item[Safety Property] Nothing bad happens: Can be checked at design time;
-\item[Liveness Property] Something good eventually happens: Much
-  harder problem;
+\item[Best Effort] May take as long as needed;\\[2ex]
+\item[Soft Real-Time] Have deadlines, but may miss some deadlines; \\[2ex]
+\item[Hard Real-time] No deadline must be missed, ever. \\[2ex]
 \end{description}
-\begin{itemize}
-\item For real-time systems all properties are safety properties, but
-  modeling of time has to be included.
-\end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -26,21 +25,21 @@
 \begin{frame}{Sharing and Isolation}
   
   \begin{itemize}
-  \item Full Isolation to accommodate the worst case:
+  \item \hilightA{Full Isolation} to accommodate the worst case:
     \begin{itemize}
     \item Dedicated resources for a given task;
     \item Addresses real-time and safety requirements;
     \item Costly due to over-provisioning;
     \item Complete isolation = no interference.
-    \end{itemize}
-  \item Full sharing to accommodate the average case:
+    \end{itemize}\pause
+  \item \hilightA{Full sharing} to accommodate the average case:
     \begin{itemize}
     \item Best average performance for given cost;
     \item Lowest cost for target average performance;
     \item Highest efficiency;
     \item Unbounded worst case performance.
-    \end{itemize}
-  \item Sharing with bounded interference:
+    \end{itemize}\pause
+  \item Sharing with \hilightA{bounded interference}:
     \begin{itemize}
     \item Allowing and controlling interference can provide real-time
       and safety requirement;
